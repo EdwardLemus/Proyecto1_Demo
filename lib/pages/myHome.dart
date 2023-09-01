@@ -12,11 +12,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+
+  double _volume = 0.0;
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      _volume++;
     });
   }
 
@@ -33,13 +34,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            IconButton(
+              icon: const Icon(Icons.volume_up),
+              tooltip: 'Increase volume by 10',
+              onPressed: () {
+                setState(() {
+                  _volume += 10;
+                });
+              },
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            Text('Volume : $_volume'),
           ],
         ),
       ),
